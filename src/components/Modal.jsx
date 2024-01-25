@@ -30,7 +30,7 @@ const Modal = ({ open, onClose, movie }) => {
       <div style={OVERLAY_STYLES} />
       <div style={MODAL_STYLES}>
         <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
-        <h2>{movie.Title}</h2>
+        <h2>{movie.original_title}</h2>
         <p>{movie.overview}</p>
         <p>
           <b>release_date: </b> {movie.release_date}

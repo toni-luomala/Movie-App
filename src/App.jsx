@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 //import axios from 'axios'
 import PropTypes from 'prop-types'
 import Display from './components/Display'
+import Navbar from './components/Navbar'
+import './styles/App.css'
 
 const App = () => {
   const [movies, setMovies] = useState([])
@@ -34,44 +36,32 @@ const App = () => {
 
   console.log('movies: ', movies)
 
-  const OTHER_CONTENT_STYLES = {
-    position: 'relative',
-    zIndex: 2,
-    backGroundColor: 'red',
-    padding: '10px'
-  }
-
-  const MAIN = {
-    margin: '2rem',
-    maxWidth: 1440
-  }
-
   return (
-    <div style={MAIN}>
+    <>
+      <Navbar />
       <div>
-        <div className="heading">
-          <h1>Find your favorite movies</h1>
-        </div>
         <div>
-          <form>
-            Search:{' '}
-            <input
-              type="search"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
+          <div className="heading"></div>
+          <div className="input">
+            <form>
+              Search:{' '}
+              <input
+                type="search"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+            </form>
+          </div>
+          <div className="display">
+            <Display
+              //searchedMovie={searchedMovie}
+              movies={movies}
+              search={search}
             />
-          </form>
-        </div>
-        <div>
-          <Display
-            //searchedMovie={searchedMovie}
-            movies={movies}
-            search={search}
-          />
+          </div>
         </div>
       </div>
-      <div style={OTHER_CONTENT_STYLES}>Other Content</div>
-    </div>
+    </>
   )
 }
 

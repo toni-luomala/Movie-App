@@ -1,0 +1,11 @@
+.movie {
+  width: 15rem;
+}
+
+.moviecard {
+  margin: 1rem;
+}
+
+.button-wrapper {
+  position: 'relative';
+}

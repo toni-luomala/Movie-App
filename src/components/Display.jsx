@@ -8,12 +8,8 @@ const Display = ({ movies }) => {
 
   console.log('typeofmovies: ', typeof movies)
 
-  const SHOWMOVIES = {
-    position: 'relative',
-    display: 'flex'
-  }
   return (
-    <div style={SHOWMOVIES}>
+    <div>
       {movies.map((movie) => (
         <div key={movie.id}>
           <Modal open={isOpen} onClose={() => setIsOpen(false)} movie={movie} />

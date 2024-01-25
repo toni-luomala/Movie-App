@@ -1,30 +1,32 @@
 import { useState } from 'react'
 import Modal from './Modal'
 import PropTypes from 'prop-types'
+import '../styles/MovieCard.css'
 
 const MovieCard = ({ movie }) => {
   const [isOpen, setIsOpen] = useState(false)
   console.log('movie title: ', movie.original_title)
 
-  //console.log('MovieCard: ', movie)
-  const BUTTON_WRAPPER_STYLES = {
-    position: 'relative',
-    zIndex: 1
-  }
-
-  const MOVIECARD = {
-    margin: '1rem'
+  const handleModal = () => {
+    setIsOpen(true)
   }
 
   return (
-    <div style={MOVIECARD}>
+    <div className="moviecard">
       <Modal open={isOpen} onClose={() => setIsOpen(false)} movie={movie} />
       <img
+        className="movie"
         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
         alt={movie.original_title}
       />
-      <div style={BUTTON_WRAPPER_STYLES}>
-        <button>details</button>
+      <div className="button-wrapper">
+        <button
+          onClick={() => {
+            handleModal()
+          }}
+        >
+          details
+        </button>
       </div>
     </div>
   )
