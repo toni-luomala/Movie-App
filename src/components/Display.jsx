@@ -2,6 +2,7 @@ import MovieCard from './MovieCard'
 import PropTypes from 'prop-types'
 import Modal from './Modal'
 import { useState } from 'react'
+import '../styles/Display.css'
 
 const Display = ({ movies }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -9,7 +10,7 @@ const Display = ({ movies }) => {
   console.log('typeofmovies: ', typeof movies)
 
   return (
-    <div>
+    <div className="display">
       {movies.map((movie) => (
         <div key={movie.id}>
           <Modal open={isOpen} onClose={() => setIsOpen(false)} movie={movie} />

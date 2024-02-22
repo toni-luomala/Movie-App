@@ -1,0 +1,14 @@
+.bottombar {
+  display: flex;
+  position: relative;
+  background-color: black;
+  padding: 2rem;
+  align-items: center;
+  justify-content: center;
+  bottom: 0px;
+}
+
+.bottomtext {
+  padding: 2rem;
+  font-size: 2rem;
+}

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import Display from './components/Display'
 import Navbar from './components/Navbar'
+import Bottombar from './components/Bottombar'
 import './styles/App.css'
 
 const App = () => {
@@ -24,7 +25,7 @@ const App = () => {
     setMovies(responseJson.results)
   }
 
-  console.log('movies: ', movies)
+  //console.log('movies: ', movies)
 
   useEffect(() => {
     getMovieRequest()
@@ -34,14 +35,13 @@ const App = () => {
   //return movie.Title.toLowerCase().includes(search.toLowerCase())
   //})
 
-  console.log('movies: ', movies)
+  //console.log('movies: ', movies)
 
   return (
     <>
       <Navbar />
       <div>
         <div>
-          <div className="heading"></div>
           <div className="input">
             <form>
               Search:{' '}
@@ -61,6 +61,7 @@ const App = () => {
           </div>
         </div>
       </div>
+      <Bottombar />
     </>
   )
 }
