@@ -9,6 +9,7 @@ import './styles/App.css'
 const App = () => {
   const [movies, setMovies] = useState([])
   const [search, setSearch] = useState('')
+  const [filteredMovies, setFilteredMovies] = useState([])
 
   //const apiKey = import.meta.env.console.log('apikey: ', apiKey)
   const getMovieRequest = async () => {
@@ -23,9 +24,8 @@ const App = () => {
     console.log('apikey: ', apikey)
 
     setMovies(responseJson.results)
+    setFilteredMovies(responseJson.results)
   }
-
-  console.log('movies: ', movies)
 
   useEffect(() => {
     getMovieRequest()
@@ -35,13 +35,13 @@ const App = () => {
     const searchTerm = e.target.value
 
     setSearch(searchTerm)
-    const searchedMovie = movies.filter((movie) =>
+    const searchedMovie = filteredMovies.filter((movie) =>
       movie.title.toLowerCase().includes(searchTerm.toLowerCase())
     )
     setMovies(searchedMovie)
   }
 
-  //console.log('movies: ', movies)
+  console.log('movies: ', movies)
 
   return (
     <>
