@@ -25,15 +25,21 @@ const App = () => {
     setMovies(responseJson.results)
   }
 
-  //console.log('movies: ', movies)
+  console.log('movies: ', movies)
 
   useEffect(() => {
     getMovieRequest()
   }, [])
 
-  //const searchedMovie = movies.filter((movie) => {
-  //return movie.Title.toLowerCase().includes(search.toLowerCase())
-  //})
+  const handleInputChange = (e) => {
+    const searchTerm = e.target.value
+
+    setSearch(searchTerm)
+    const searchedMovie = movies.filter((movie) =>
+      movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    setMovies(searchedMovie)
+  }
 
   //console.log('movies: ', movies)
 
@@ -48,16 +54,13 @@ const App = () => {
               <input
                 type="search"
                 value={search}
-                onChange={(e) => setSearch(e.target.value)}
+                onChange={handleInputChange}
+                placeholder="Type movie to search"
               />
             </form>
           </div>
           <div className="display">
-            <Display
-              //searchedMovie={searchedMovie}
-              movies={movies}
-              search={search}
-            />
+            <Display movies={movies} search={search} />
           </div>
         </div>
       </div>
