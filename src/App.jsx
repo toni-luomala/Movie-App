@@ -19,7 +19,7 @@ const App = () => {
 
     const apiKey = import.meta.env.VITE_REACT_API_KEY
 
-    const fullUrl = `${searchUrl}${movies}${apiKey}`
+    const fullUrl = `${searchUrl}${search}${apiKey}`
 
     const response = await fetch(url)
 
@@ -37,13 +37,13 @@ const App = () => {
 
     console.log('apikey: ', apikey)
 
-    setMovies(responseJson.results)
-    setFilteredMovies(searchResponseJson.results)
+    setMovies(searchResponseJson.results)
+    //setFilteredMovies(searchResponseJson.results)
   }
 
   useEffect(() => {
     getMovieRequest()
-  }, [])
+  }, [search])
 
   const handleInputChange = (e) => {
     const searchTerm = e.target.value
