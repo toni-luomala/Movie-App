@@ -14,8 +14,22 @@ const App = () => {
   //const apiKey = import.meta.env.console.log('apikey: ', apiKey)
   const getMovieRequest = async () => {
     const url = import.meta.env.VITE_REACT_API_URL
+
+    const searchUrl = import.meta.env.VITE_REACT_API_URL_SEARCH
+
+    const apiKey = import.meta.env.VITE_REACT_API_KEY
+
+    const fullUrl = `${searchUrl}${movies}${apiKey}`
+
     const response = await fetch(url)
+
+    const searchResponse = await fetch(fullUrl)
+
+    console.log('searchResponse: ', searchResponse)
+
     const responseJson = await response.json()
+
+    const searchResponseJson = await searchResponse.json()
 
     console.log('response: ', responseJson.results)
 
@@ -24,7 +38,7 @@ const App = () => {
     console.log('apikey: ', apikey)
 
     setMovies(responseJson.results)
-    setFilteredMovies(responseJson.results)
+    setFilteredMovies(searchResponseJson.results)
   }
 
   useEffect(() => {
