@@ -3,7 +3,7 @@ import '../styles/Bottombar.css'
 const Bottombar = () => {
   return (
     <div className="bottombar">
-      <p className="bottomtext">Movie Database</p>
+      <p className="bottomtext">Movie Database - themoviedb.org</p>
     </div>
   )
 }

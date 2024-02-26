@@ -33,12 +33,9 @@ const App = () => {
 
     console.log('response: ', responseJson.results)
 
-    const apikey = JSON.stringify(import.meta.env.VITE_REACT_API)
-
-    console.log('apikey: ', apikey)
-
-    setMovies(searchResponseJson.results)
-    //setFilteredMovies(searchResponseJson.results)
+    search === ''
+      ? setMovies(responseJson.results)
+      : setMovies(searchResponseJson.results)
   }
 
   useEffect(() => {
