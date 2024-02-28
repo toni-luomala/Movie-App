@@ -4,14 +4,15 @@ import PropTypes from 'prop-types'
 import Display from './components/Display'
 import Navbar from './components/Navbar'
 import Bottombar from './components/Bottombar'
+import Favorites from './components/Favorites'
 import './styles/App.css'
 
 const App = () => {
   const [movies, setMovies] = useState([])
   const [search, setSearch] = useState('')
-  const [filteredMovies, setFilteredMovies] = useState([])
+  const [filteredMovies] = useState([])
+  const [favorites, setFavorites] = useState([])
 
-  //const apiKey = import.meta.env.console.log('apikey: ', apiKey)
   const getMovieRequest = async () => {
     const url = import.meta.env.VITE_REACT_API_URL
 
@@ -24,8 +25,6 @@ const App = () => {
     const response = await fetch(url)
 
     const searchResponse = await fetch(fullUrl)
-
-    console.log('searchResponse: ', searchResponse)
 
     const responseJson = await response.json()
 
@@ -54,9 +53,27 @@ const App = () => {
 
   console.log('movies: ', movies)
 
+  console.log('favorites: ', favorites)
+
+  const addToFavorites = (movie) => {
+    setFavorites([...favorites, movie])
+    console.log('favorites: ', favorites)
+  }
+
+  const showFavorites = () => {
+    console.log('favorites button clicked')
+    return (
+      <>
+        <Favorites />
+      </>
+    )
+  }
+
   return (
     <>
       <Navbar />
+      <button onClick={showFavorites}>favorites </button>
+
       <div>
         <div>
           <div className="input">
@@ -71,7 +88,11 @@ const App = () => {
             </form>
           </div>
           <div className="display">
-            <Display movies={movies} search={search} />
+            <Display
+              movies={movies}
+              search={search}
+              addToFavorites={addToFavorites}
+            />
           </div>
         </div>
       </div>

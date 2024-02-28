@@ -4,17 +4,21 @@ import Modal from './Modal'
 import { useState } from 'react'
 import '../styles/Display.css'
 
-const Display = ({ movies }) => {
+const Display = ({ movies, addToFavorites }) => {
   const [isOpen, setIsOpen] = useState(false)
 
-  console.log('typeofmovies: ', typeof movies)
+  //console.log('typeofmovies: ', typeof movies)
 
   return (
     <div className="display">
       {movies.map((movie) => (
         <div key={movie.id}>
           <Modal open={isOpen} onClose={() => setIsOpen(false)} movie={movie} />
-          <MovieCard movie={movie} onClick={() => setIsOpen(true)} />
+          <MovieCard
+            movie={movie}
+            addToFavorites={addToFavorites}
+            onClick={() => setIsOpen(true)}
+          />
         </div>
       ))}
     </div>

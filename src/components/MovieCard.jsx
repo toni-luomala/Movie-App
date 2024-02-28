@@ -3,9 +3,10 @@ import Modal from './Modal'
 import PropTypes from 'prop-types'
 import '../styles/MovieCard.css'
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, addToFavorites }) => {
   const [isOpen, setIsOpen] = useState(false)
-  console.log('movie title: ', movie.original_title)
+
+  //console.log('movie title: ', movie.original_title)
 
   const handleModal = () => {
     setIsOpen(true)
@@ -27,6 +28,7 @@ const MovieCard = ({ movie }) => {
         >
           details
         </button>
+        <button onClick={() => addToFavorites(movie)}>to favorites</button>
       </div>
     </div>
   )
