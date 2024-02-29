@@ -4,9 +4,7 @@ import Modal from './Modal'
 import { useState } from 'react'
 import '../styles/Display.css'
 
-const Display = ({ movies, addToFavorites }) => {
-  const [isOpen, setIsOpen] = useState(false)
-
+const Display = ({ movies, addToFavorites, isOpen, setIsOpen }) => {
   //console.log('typeofmovies: ', typeof movies)
 
   return (

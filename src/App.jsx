@@ -13,6 +13,7 @@ const App = () => {
   const [filteredMovies] = useState([])
   const [favorites, setFavorites] = useState([])
   const [showFavorites, setShowFavorites] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
 
   const getMovieRequest = async () => {
     const url = import.meta.env.VITE_REACT_API_URL
@@ -64,6 +65,8 @@ const App = () => {
     if (!alreadyFavorite) {
       setFavorites([...favorites, movie])
       console.log('favorites: ', favorites)
+    } else {
+      window.alert('This movie is already added to favorites!')
     }
   }
 
@@ -75,40 +78,47 @@ const App = () => {
   return (
     <>
       <Navbar />
-
+      <button onClick={() => setShowFavorites(false)}>Main page</button>
       <button onClick={handleShowFavorites}>favorites </button>
       {showFavorites && (
         <div className="display">
           {favorites.map((favorite) => (
             <div>
-              <Favorites favorite={favorite} />
+              <Favorites
+                favorite={favorite}
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+              />
             </div>
           ))}
         </div>
       )}
-
-      <div>
+      {!showFavorites && (
         <div>
-          <div className="input">
-            <form>
-              Search:{' '}
-              <input
-                type="search"
-                value={search}
-                onChange={handleInputChange}
-                placeholder="Type movie to search"
+          <div>
+            <div className="input">
+              <form>
+                Search:{' '}
+                <input
+                  type="search"
+                  value={search}
+                  onChange={handleInputChange}
+                  placeholder="Type movie to search"
+                />
+              </form>
+            </div>
+            <div className="display">
+              <Display
+                movies={movies}
+                search={search}
+                addToFavorites={addToFavorites}
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
               />
-            </form>
-          </div>
-          <div className="display">
-            <Display
-              movies={movies}
-              search={search}
-              addToFavorites={addToFavorites}
-            />
+            </div>
           </div>
         </div>
-      </div>
+      )}
       <Bottombar />
     </>
   )
