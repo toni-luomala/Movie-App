@@ -12,6 +12,7 @@ const App = () => {
   const [search, setSearch] = useState('')
   const [filteredMovies] = useState([])
   const [favorites, setFavorites] = useState([])
+  const [showFavorites, setShowFavorites] = useState(false)
 
   const getMovieRequest = async () => {
     const url = import.meta.env.VITE_REACT_API_URL
@@ -66,29 +67,25 @@ const App = () => {
     }
   }
 
-  /*
-  const showFavorites = () => {
+  const handleShowFavorites = () => {
+    setShowFavorites(true)
     console.log('favorites button clicked')
-    return (
-      <>
-        <Favorites />
-      </>
-    )
-    
   }
-*/
+
   return (
     <>
       <Navbar />
 
-      <button>favorites </button>
-      <div className="display">
-        {favorites.map((favorite) => (
-          <div>
-            <Favorites favorite={favorite} />
-          </div>
-        ))}
-      </div>
+      <button onClick={handleShowFavorites}>favorites </button>
+      {showFavorites && (
+        <div className="display">
+          {favorites.map((favorite) => (
+            <div>
+              <Favorites favorite={favorite} />
+            </div>
+          ))}
+        </div>
+      )}
 
       <div>
         <div>
