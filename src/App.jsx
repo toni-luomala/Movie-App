@@ -66,6 +66,7 @@ const App = () => {
     }
   }
 
+  /*
   const showFavorites = () => {
     console.log('favorites button clicked')
     return (
@@ -73,12 +74,21 @@ const App = () => {
         <Favorites />
       </>
     )
+    
   }
-
+*/
   return (
     <>
       <Navbar />
-      <button onClick={showFavorites}>favorites </button>
+
+      <button>favorites </button>
+      <div className="display">
+        {favorites.map((favorite) => (
+          <div>
+            <Favorites favorite={favorite} />
+          </div>
+        ))}
+      </div>
 
       <div>
         <div>
