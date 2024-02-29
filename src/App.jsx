@@ -56,8 +56,14 @@ const App = () => {
   console.log('favorites: ', favorites)
 
   const addToFavorites = (movie) => {
-    setFavorites([...favorites, movie])
-    console.log('favorites: ', favorites)
+    const alreadyFavorite = favorites.some(
+      (newmovie) => newmovie.id === movie.id
+    )
+
+    if (!alreadyFavorite) {
+      setFavorites([...favorites, movie])
+      console.log('favorites: ', favorites)
+    }
   }
 
   const showFavorites = () => {
