@@ -72,8 +72,12 @@ const App = () => {
   return (
     <>
       <Navbar />
-      <button onClick={() => setShowFavorites(false)}>Main page</button>
-      <button onClick={() => setShowFavorites(true)}>favorites </button>
+      <button className="top-button" onClick={() => setShowFavorites(false)}>
+        Main page
+      </button>
+      <button className="top-button" onClick={() => setShowFavorites(true)}>
+        favorites{' '}
+      </button>
       {showFavorites && (
         <div className="display">
           {favorites.map((movie) => (
