@@ -1,19 +1,27 @@
 import Modal from './Modal'
+import { useState } from 'react'
 
-const Favorites = ({ favorite, isOpen, setIsOpen }) => {
+const Favorites = ({ movie }) => {
+  const [isOpen, setIsOpen] = useState(false)
+  console.log('movie: ', movie)
+
   return (
-    <div>
-      <Modal
-        open={isOpen}
-        onClose={() => setIsOpen(false)}
-        favorite={favorite}
-      />
+    <div className="moviecard">
+      <Modal open={isOpen} onClose={() => setIsOpen(false)} movie={movie} />
       <img
         className="movie"
-        src={`https://image.tmdb.org/t/p/w500${favorite.poster_path}`}
-        alt={favorite.original_title}
-        onClick={() => setIsOpen(true)}
+        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+        alt={movie.original_title}
       />
+      <div>
+        <button
+          onClick={() => {
+            setIsOpen(true)
+          }}
+        >
+          details
+        </button>
+      </div>
     </div>
   )
 }

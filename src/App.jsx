@@ -5,6 +5,7 @@ import Display from './components/Display'
 import Navbar from './components/Navbar'
 import Bottombar from './components/Bottombar'
 import Favorites from './components/Favorites'
+import Modal from './components/Modal'
 import './styles/App.css'
 
 const App = () => {
@@ -82,13 +83,14 @@ const App = () => {
       <button onClick={handleShowFavorites}>favorites </button>
       {showFavorites && (
         <div className="display">
-          {favorites.map((favorite) => (
+          {favorites.map((movie) => (
             <div>
-              <Favorites
-                favorite={favorite}
-                isOpen={isOpen}
-                setIsOpen={setIsOpen}
+              <Modal
+                open={isOpen}
+                onClose={() => setIsOpen(false)}
+                movie={movie}
               />
+              <Favorites movie={movie} isOpen={isOpen} setIsOpen={setIsOpen} />
             </div>
           ))}
         </div>

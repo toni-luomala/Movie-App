@@ -1,7 +1,6 @@
 import MovieCard from './MovieCard'
 import PropTypes from 'prop-types'
 import Modal from './Modal'
-import { useState } from 'react'
 import '../styles/Display.css'
 
 const Display = ({ movies, addToFavorites, isOpen, setIsOpen }) => {
