@@ -1,7 +1,13 @@
 .movie {
   width: 15rem;
+  border-radius: 3%;
 }
 
 .moviecard {
+  text-align: center;
   margin: 1rem;
+}
+
+p {
+  text-align: center;
 }

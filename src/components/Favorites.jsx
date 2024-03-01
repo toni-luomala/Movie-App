@@ -12,16 +12,11 @@ const Favorites = ({ movie }) => {
         className="movie"
         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
         alt={movie.original_title}
+        onClick={() => {
+          setIsOpen(true)
+        }}
       />
-      <div>
-        <button
-          onClick={() => {
-            setIsOpen(true)
-          }}
-        >
-          details
-        </button>
-      </div>
+      <p>{movie.original_title}</p>
     </div>
   )
 }

@@ -4,8 +4,6 @@ import Modal from './Modal'
 import '../styles/Display.css'
 
 const Display = ({ movies, addToFavorites, isOpen, setIsOpen }) => {
-  //console.log('typeofmovies: ', typeof movies)
-
   return (
     <div className="display">
       {movies.map((movie) => (

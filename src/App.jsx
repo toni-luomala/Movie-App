@@ -5,7 +5,6 @@ import Display from './components/Display'
 import Navbar from './components/Navbar'
 import Bottombar from './components/Bottombar'
 import Favorites from './components/Favorites'
-import Modal from './components/Modal'
 import './styles/App.css'
 
 const App = () => {
@@ -14,7 +13,6 @@ const App = () => {
   const [filteredMovies] = useState([])
   const [favorites, setFavorites] = useState([])
   const [showFavorites, setShowFavorites] = useState(false)
-  const [isOpen, setIsOpen] = useState(false)
 
   const getMovieRequest = async () => {
     const url = import.meta.env.VITE_REACT_API_URL
@@ -65,32 +63,22 @@ const App = () => {
 
     if (!alreadyFavorite) {
       setFavorites([...favorites, movie])
-      console.log('favorites: ', favorites)
+      window.alert('Added movie succesfully to favorites.')
     } else {
       window.alert('This movie is already added to favorites!')
     }
-  }
-
-  const handleShowFavorites = () => {
-    setShowFavorites(true)
-    console.log('favorites button clicked')
   }
 
   return (
     <>
       <Navbar />
       <button onClick={() => setShowFavorites(false)}>Main page</button>
-      <button onClick={handleShowFavorites}>favorites </button>
+      <button onClick={() => setShowFavorites(true)}>favorites </button>
       {showFavorites && (
         <div className="display">
           {favorites.map((movie) => (
             <div>
-              <Modal
-                open={isOpen}
-                onClose={() => setIsOpen(false)}
-                movie={movie}
-              />
-              <Favorites movie={movie} isOpen={isOpen} setIsOpen={setIsOpen} />
+              <Favorites movie={movie} />
             </div>
           ))}
         </div>
@@ -114,8 +102,6 @@ const App = () => {
                 movies={movies}
                 search={search}
                 addToFavorites={addToFavorites}
-                isOpen={isOpen}
-                setIsOpen={setIsOpen}
               />
             </div>
           </div>

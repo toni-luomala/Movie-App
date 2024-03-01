@@ -19,17 +19,14 @@ const MovieCard = ({ movie, addToFavorites }) => {
         className="movie"
         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
         alt={movie.original_title}
+        onClick={() => {
+          handleModal()
+        }}
       />
-      <div>
-        <button
-          onClick={() => {
-            handleModal()
-          }}
-        >
-          details
-        </button>
-        <button onClick={() => addToFavorites(movie)}>to favorites</button>
-      </div>
+      <p>{movie.original_title}</p>
+      <button className="favorite-button" onClick={() => addToFavorites(movie)}>
+        add to favorites
+      </button>
     </div>
   )
 }
