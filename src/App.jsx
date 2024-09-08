@@ -63,9 +63,9 @@ const App = () => {
 
     if (!alreadyFavorite) {
       setFavorites([...favorites, movie])
-      window.alert('Added movie succesfully to favorites.')
+      window.alert(`Added ${movie.original_title} succesfully to favorites.`)
     } else {
-      window.alert('This movie is already added to favorites!')
+      window.alert(`${movie.original_title} is already added to favorites.`)
     }
   }
 
