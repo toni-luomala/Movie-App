@@ -5,6 +5,7 @@ import Display from './components/Display'
 import Navbar from './components/Navbar'
 import Bottombar from './components/Bottombar'
 import Favorites from './components/Favorites'
+import favoritesService from './services/favorites'
 import './styles/App.css'
 
 const App = () => {
@@ -62,7 +63,10 @@ const App = () => {
     )
 
     if (!alreadyFavorite) {
-      setFavorites([...favorites, movie])
+      console.log('favoritemovie: ', movie)
+      favoritesService.add(movie).then((returnedMovie) => {
+        setFavorites([...favorites.concat(returnedMovie)])
+      })
       window.alert(`Added ${movie.original_title} succesfully to favorites.`)
     } else {
       window.alert(`${movie.original_title} is already added to favorites.`)
