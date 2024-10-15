@@ -3,23 +3,7 @@ const app = express()
 
 app.use(express.json())
 
-let movies = [
-  {
-    id: '1',
-    original_title: "Rocky 7: Adrian's Revenge",
-    important: true
-  },
-  {
-    id: '2',
-    original_title: 'Ace Ventura 3',
-    important: false
-  },
-  {
-    id: '3',
-    original_title: 'Commando 2',
-    important: true
-  }
-]
+let movies = []
 
 const cors = require('cors')
 
@@ -33,17 +17,6 @@ app.get('/api/favorites', (request, response) => {
   response.json(movies)
 })
 
-app.get('/api/favorites/:id', (request, response) => {
-  const id = request.params.id
-  const note = notes.find((note) => note.id === id)
-
-  if (note) {
-    response.json(note)
-  } else {
-    response.status(404).end()
-  }
-})
-
 app.delete('/api/favorites/:id', (request, response) => {
   const id = request.params.id
   notes = notes.filter((note) => note.id !== id)
@@ -53,14 +26,27 @@ app.delete('/api/favorites/:id', (request, response) => {
 
 app.post('/api/favorites', (request, response) => {
   const movie = request.body
-  console.log(movie)
+  console.log('movie:', movie)
   if (!movie.original_title) {
     return response.status(400).json({
       error: 'movie title missing'
     })
   }
 
-  response.json(movie)
+  movies.push(movie)
+  console.log('movies:', movies)
+  response.json(movies)
+})
+
+app.get('/api/favorites/:id', (request, response) => {
+  const id = request.params.id
+  const movie = movies.find((movie) => movie.id === id)
+
+  if (movie) {
+    response.json(movie)
+  } else {
+    response.status(404).end()
+  }
 })
 
 const PORT = 3001
