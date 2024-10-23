@@ -42,6 +42,16 @@ const App = () => {
     getMovieRequest()
   }, [search])
 
+  const getFavorites = () => {
+    favoritesService.getAll().then((favoriteMovies) => {
+      setFavorites(favoriteMovies)
+    })
+  }
+
+  useEffect(() => {
+    getFavorites()
+  }, [])
+
   const handleInputChange = (e) => {
     const searchTerm = e.target.value
 
