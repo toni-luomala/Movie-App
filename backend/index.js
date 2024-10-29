@@ -10,17 +10,18 @@ const cors = require('cors')
 app.use(cors())
 
 app.get('/', (request, response) => {
-  response.send('<h1>Hello World!</h1>')
+  response.send('<h1>Movies Backend</h1>')
 })
 
 app.get('/api/favorites', (request, response) => {
+  console.log('movies: ', movies)
   response.json(movies)
 })
 
 app.delete('/api/favorites/:id', (request, response) => {
-  const id = request.params.id
-  notes = notes.filter((note) => note.id !== id)
-
+  const id = Number(request.params.id)
+  movies = movies.filter((movie) => movie.id !== id)
+  console.log('movie deleted')
   response.status(204).end()
 })
 
@@ -39,7 +40,8 @@ app.post('/api/favorites', (request, response) => {
 })
 
 app.get('/api/favorites/:id', (request, response) => {
-  const id = request.params.id
+  const id = Number(request.params.id)
+  console.log('id: ', typeof id)
   const movie = movies.find((movie) => movie.id === id)
 
   if (movie) {

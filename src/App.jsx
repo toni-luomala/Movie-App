@@ -95,7 +95,12 @@ const App = () => {
         <div className="display">
           {favorites.map((movie) => (
             <div>
-              <Favorites movie={movie} getFavorites={getFavorites} />
+              <Favorites
+                movie={movie}
+                getFavorites={getFavorites}
+                setFavorites={setFavorites}
+                favorites={favorites}
+              />
             </div>
           ))}
         </div>
