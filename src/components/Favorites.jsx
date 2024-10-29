@@ -1,9 +1,13 @@
 import Modal from './Modal'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
-const Favorites = ({ movie }) => {
+const Favorites = ({ movie, getFavorites }) => {
   const [isOpen, setIsOpen] = useState(false)
   console.log('movie: ', movie)
+
+  useEffect(() => {
+    getFavorites()
+  }, [])
 
   return (
     <div className="moviecard">

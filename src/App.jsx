@@ -74,7 +74,7 @@ const App = () => {
     if (!alreadyFavorite) {
       console.log('favoritemovie: ', movie)
       favoritesService.add(movie).then((returnedMovie) => {
-        setFavorites([...favorites.concat(returnedMovie)])
+        setFavorites([...favorites, returnedMovie])
       })
       window.alert(`Added ${movie.original_title} succesfully to favorites.`)
     } else {
@@ -95,7 +95,7 @@ const App = () => {
         <div className="display">
           {favorites.map((movie) => (
             <div>
-              <Favorites movie={movie} />
+              <Favorites movie={movie} getFavorites={getFavorites} />
             </div>
           ))}
         </div>
