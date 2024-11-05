@@ -4,6 +4,7 @@ import favoritesService from '../services/favorites'
 import { useState, useEffect } from 'react'
 
 const Favorites = ({ movie, getFavorites, setFavorites, favorites }) => {
+  console.log('Fav: ', favorites)
   const [isOpen, setIsOpen] = useState(false)
   console.log('movie: ', movie)
 
@@ -20,21 +21,33 @@ const Favorites = ({ movie, getFavorites, setFavorites, favorites }) => {
     console.log('remove this: ', movie)
   }
 
-  return (
-    <div className="moviecard">
-      <Modal open={isOpen} onClose={() => setIsOpen(false)} movie={movie} />
-      <img
-        className="movie"
-        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-        alt={movie.original_title}
-        onClick={() => {
-          setIsOpen(true)
-        }}
-      />
-      <p>{movie.original_title}</p>
-      <Button onClick={() => removeFavorite(movie)}></Button>
-    </div>
-  )
+  if (favorites.length === 0) {
+    return <div>No favorites added!</div>
+  } else {
+    return (
+      <div>
+        {favorites.map((movie) => (
+          <div className="moviecard">
+            <Modal
+              open={isOpen}
+              onClose={() => setIsOpen(false)}
+              movie={movie}
+            />
+            <img
+              className="movie"
+              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+              alt={movie.original_title}
+              onClick={() => {
+                setIsOpen(true)
+              }}
+            />
+            <p>{movie.original_title}</p>
+            <Button onClick={() => removeFavorite(movie)}></Button>
+          </div>
+        ))}
+      </div>
+    )
+  }
 }
 
 export default Favorites

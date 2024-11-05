@@ -82,6 +82,8 @@ const App = () => {
     }
   }
 
+  console.log('showfavorites: ', showFavorites)
+
   return (
     <>
       <Navbar />
@@ -93,16 +95,11 @@ const App = () => {
       </button>
       {showFavorites && (
         <div className="display">
-          {favorites.map((movie) => (
-            <div>
-              <Favorites
-                movie={movie}
-                getFavorites={getFavorites}
-                setFavorites={setFavorites}
-                favorites={favorites}
-              />
-            </div>
-          ))}
+          <Favorites
+            getFavorites={getFavorites}
+            setFavorites={setFavorites}
+            favorites={favorites}
+          />
         </div>
       )}
       {!showFavorites && (
