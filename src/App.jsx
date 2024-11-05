@@ -91,7 +91,7 @@ const App = () => {
         Main page
       </button>
       <button className="top-button" onClick={() => setShowFavorites(true)}>
-        favorites{' '}
+        favorites ({favorites.length})
       </button>
       {showFavorites && (
         <div className="display">
