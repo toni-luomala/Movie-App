@@ -82,6 +82,14 @@ const App = () => {
     }
   }
 
+  const favoriteCount = (favorites) => {
+    if (favorites.length === 0) {
+      return null
+    } else {
+      return `(${favorites.length})`
+    }
+  }
+
   console.log('showfavorites: ', showFavorites)
 
   return (
@@ -91,7 +99,7 @@ const App = () => {
         Main page
       </button>
       <button className="top-button" onClick={() => setShowFavorites(true)}>
-        favorites ({favorites.length})
+        favorites {favoriteCount(favorites)}
       </button>
       {showFavorites && (
         <div className="display">
