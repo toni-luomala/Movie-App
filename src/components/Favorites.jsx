@@ -18,6 +18,7 @@ const Favorites = ({ movie, getFavorites, setFavorites, favorites }) => {
     favoritesService
       .remove(id)
       .then(setFavorites(favorites.filter((p) => p.id !== id)))
+    window.alert(`Removed ${movie.original_title} succesfully from favorites.`)
     console.log('remove this: ', movie)
   }
 
