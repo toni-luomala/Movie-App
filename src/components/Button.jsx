@@ -1,5 +1,11 @@
+import '../styles/Button.css'
+
 const Button = ({ onClick }) => {
-  return <button onClick={onClick}>remove</button>
+  return (
+    <button className="button" onClick={onClick}>
+      remove
+    </button>
+  )
 }
 
 export default Button
