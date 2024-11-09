@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="main">
-        <h1>Find your favorite movies</h1>
+        <h2>Find your favorite movies</h2>
         <div className="button"></div>
       </nav>
     </>

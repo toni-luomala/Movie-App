@@ -117,6 +117,7 @@ const App = () => {
               <form>
                 Search:{' '}
                 <input
+                  className="element"
                   type="search"
                   value={search}
                   onChange={handleInputChange}

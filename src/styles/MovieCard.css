@@ -1,5 +1,6 @@
 .movie {
-  width: 15rem;
+  width: 6rem;
+  height: 9rem;
   border-radius: 3%;
 }
 
@@ -10,4 +11,9 @@
 
 p {
   text-align: center;
+}
+
+.favorite-button {
+  width: 5rem;
+  font-size: 10px;
 }
