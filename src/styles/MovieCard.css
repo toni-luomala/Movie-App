@@ -2,6 +2,12 @@
   width: 6rem;
   height: 9rem;
   border-radius: 3%;
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.movie:hover {
+  border-color: #646cff;
 }
 
 .moviecard {
