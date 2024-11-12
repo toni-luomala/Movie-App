@@ -26,7 +26,7 @@ const Favorites = ({ movie, getFavorites, setFavorites, favorites }) => {
     return <div>No favorites added!</div>
   } else {
     return (
-      <div>
+      <div className="display">
         {favorites.map((movie) => (
           <div className="moviecard" key={movie.id}>
             <Modal

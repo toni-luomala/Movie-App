@@ -6,8 +6,6 @@ import '../styles/MovieCard.css'
 const MovieCard = ({ movie, addToFavorites }) => {
   const [isOpen, setIsOpen] = useState(false)
 
-  //console.log('movie title: ', movie.original_title)
-
   const handleModal = () => {
     setIsOpen(true)
   }
