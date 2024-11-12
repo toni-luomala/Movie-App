@@ -102,7 +102,7 @@ const App = () => {
         favorites {favoriteCount(favorites)}
       </button>
       {showFavorites && (
-        <div className="display">
+        <div className="display" key={favorites.id}>
           <Favorites
             getFavorites={getFavorites}
             setFavorites={setFavorites}

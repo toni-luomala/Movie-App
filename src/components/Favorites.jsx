@@ -28,7 +28,7 @@ const Favorites = ({ movie, getFavorites, setFavorites, favorites }) => {
     return (
       <div>
         {favorites.map((movie) => (
-          <div className="moviecard">
+          <div className="moviecard" key={movie.id}>
             <Modal
               open={isOpen}
               onClose={() => setIsOpen(false)}
