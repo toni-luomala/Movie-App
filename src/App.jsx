@@ -90,6 +90,8 @@ const App = () => {
     }
   }
 
+  const showTitle = () => (search === '' ? <h1>Top 20 New Movies</h1> : null)
+
   console.log('showfavorites: ', showFavorites)
 
   return (
@@ -125,6 +127,7 @@ const App = () => {
                 />
               </form>
             </div>
+            <div>{showTitle()}</div>
             <div className="display">
               <Display
                 movies={movies}

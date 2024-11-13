@@ -9,8 +9,7 @@ const MODAL_STYLES = {
   backgroundColor: '#FFF',
   padding: '50px',
   zIndex: 1000,
-  color: 'black',
-  width: '39rem'
+  color: 'black'
 }
 
 const OVERLAY_STYLES = {
@@ -24,7 +23,6 @@ const OVERLAY_STYLES = {
 }
 
 const Modal = ({ open, onClose, movie }) => {
-  //console.log('moviesOnModal: ', movie)
   if (!open) return null
   return ReactDom.createPortal(
     <>
