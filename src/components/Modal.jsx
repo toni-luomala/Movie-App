@@ -1,40 +1,39 @@
 import ReactDom from 'react-dom'
 import PropTypes from 'prop-types'
+import '../styles/Modal.css'
 
-const MODAL_STYLES = {
-  position: 'fixed',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  backgroundColor: '#FFF',
-  padding: '50px',
-  zIndex: 1000,
-  color: 'black'
+/*
+const CONTENT_STYLES = {
+  display: 'flex',
+  marginLeft: 'auto',
+  marginRight: 'auto',
+  flexDirection: 'column',
+  maxWidth: '80%',
+  maxHeight: '35%',
+  fontSize: '5px',
+  textAlign: 'center'
 }
+  */
 
-const OVERLAY_STYLES = {
-  position: 'fixed',
-  top: 0,
-  left: 0,
-  right: 0,
-  bottom: 0,
-  backgroundColor: 'rgba(0,0,0,.7)',
-  zIndex: 1000
-}
-
+0
 const Modal = ({ open, onClose, movie }) => {
   if (!open) return null
   return ReactDom.createPortal(
     <>
-      <div style={OVERLAY_STYLES} />
-      <div style={MODAL_STYLES}>
-        <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
-        <h2>{movie.original_title}</h2>
-        <p>{movie.overview}</p>
-        <p>
-          <b>release_date: </b> {movie.release_date}
-        </p>
-        <button onClick={onClose}>Close</button>
+      <div className="overlaystyles" />
+      <div className="modalstyles">
+        <div className="contentstyles">
+          <img
+            className="imagestyles"
+            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+          />
+          <h3>{movie.original_title}</h3>
+          <p>{movie.overview}</p>
+          <p>
+            <b>release_date: </b> {movie.release_date}
+          </p>
+          <button onClick={onClose}>Close</button>
+        </div>
       </div>
     </>,
     document.getElementById('portal')
