@@ -11,8 +11,8 @@
 }
 
 .moviecard {
-  text-align: center;
   margin: 1rem;
+  justify-items: center;
 }
 
 p {
