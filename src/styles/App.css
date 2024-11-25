@@ -11,6 +11,7 @@
 
 .display {
   padding: 1.5rem;
+  margin-right: 3rem;
 }
 
 .top-button {
@@ -20,4 +21,26 @@
 
 h1 {
   text-align: center;
+}
+
+@media only screen and (max-width: 1400px) {
+  .title {
+    font-size: 3.5rem;
+  }
+
+  .top-button {
+    margin: 1.5rem;
+    font-size: 3.5rem;
+  }
+
+  .input {
+    padding: 2rem;
+    font-size: 4rem;
+    height: 2rem;
+  }
+
+  .element {
+    height: 3.5rem;
+    font-size: 2rem;
+  }
 }

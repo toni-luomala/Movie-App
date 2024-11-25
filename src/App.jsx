@@ -127,7 +127,7 @@ const App = () => {
                 />
               </form>
             </div>
-            <div>{showTitle()}</div>
+            <div className="title">{showTitle()}</div>
             <div className="display">
               <Display
                 movies={movies}

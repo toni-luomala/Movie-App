@@ -23,3 +23,19 @@ p {
   width: 5rem;
   font-size: 10px;
 }
+
+@media only screen and (max-width: 1400px) {
+  .movie {
+    width: 30rem;
+    height: 45rem;
+  }
+
+  .favorite-button {
+    width: 15rem;
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 2.5rem;
+  }
+}

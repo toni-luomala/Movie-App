@@ -13,3 +13,9 @@
 .button {
   margin: 3rem;
 }
+
+@media only screen and (max-width: 1400px) {
+  h2 {
+    font-size: 8rem;
+  }
+}

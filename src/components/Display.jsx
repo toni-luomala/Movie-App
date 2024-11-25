@@ -7,7 +7,7 @@ const Display = ({ movies, addToFavorites, isOpen, setIsOpen }) => {
   return (
     <div className="display">
       {movies.map((movie) => (
-        <div key={movie.id}>
+        <div key={movie.id} className="movie-container">
           <Modal open={isOpen} onClose={() => setIsOpen(false)} movie={movie} />
           <MovieCard
             movie={movie}

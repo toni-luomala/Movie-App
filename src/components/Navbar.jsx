@@ -1,5 +1,4 @@
 import '../styles/NavBar.css'
-import Favorites from './Favorites'
 
 const Navbar = () => {
   return (
