@@ -14,7 +14,7 @@ const MovieCard = ({ movie, addToFavorites }) => {
     <div className="moviecard">
       <Modal open={isOpen} onClose={() => setIsOpen(false)} movie={movie} />
       <img
-        className="movie"
+        className="movie-image"
         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
         alt={movie.original_title}
         onClick={() => {
@@ -22,9 +22,9 @@ const MovieCard = ({ movie, addToFavorites }) => {
         }}
       />
       <p>{movie.original_title}</p>
-      <button className="favorite-button" onClick={() => addToFavorites(movie)}>
-        add to favorites
-      </button>
+      <div className="favorite-button">
+        <button onClick={() => addToFavorites(movie)}>add to favorites</button>
+      </div>
     </div>
   )
 }

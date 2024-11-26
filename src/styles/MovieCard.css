@@ -1,4 +1,4 @@
-.movie {
+.movie-image {
   width: 6rem;
   height: 9rem;
   border-radius: 3%;
@@ -11,8 +11,12 @@
 }
 
 .moviecard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
   margin: 1rem;
-  justify-items: center;
+  align-items: center;
+  height: 100%;
 }
 
 p {
@@ -20,19 +24,23 @@ p {
 }
 
 .favorite-button {
+  display: flex;
   width: 5rem;
   font-size: 10px;
+  margin-top: auto;
 }
 
 @media only screen and (max-width: 1400px) {
-  .movie {
+  .movie-image {
     width: 30rem;
     height: 45rem;
   }
 
   .favorite-button {
+    display: flex;
     width: 15rem;
     font-size: 2rem;
+    bottom: 0;
   }
 
   p {
