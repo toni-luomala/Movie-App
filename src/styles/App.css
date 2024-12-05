@@ -1,12 +1,12 @@
 .input {
   padding: 2rem;
-  font-size: 10px;
+  font-size: 1.5rem;
   height: 2rem;
 }
 
 .element {
-  height: 1rem;
-  font-size: 10px;
+  height: 2rem;
+  font-size: 1rem;
 }
 
 .display {
@@ -17,7 +17,7 @@
 
 .top-button {
   margin: 0.5rem;
-  font-size: 10px;
+  font-size: 1rem;
 }
 
 h1 {

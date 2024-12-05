@@ -3,6 +3,10 @@ import Button from './Button'
 import favoritesService from '../services/favorites'
 import { useState, useEffect } from 'react'
 
+const nofavorites = {
+  fontSize: '1.5rem'
+}
+
 const Favorites = ({ movie, getFavorites, setFavorites, favorites }) => {
   console.log('Fav: ', favorites)
   const [isOpen, setIsOpen] = useState(false)
@@ -23,7 +27,7 @@ const Favorites = ({ movie, getFavorites, setFavorites, favorites }) => {
   }
 
   if (favorites.length === 0) {
-    return <div>No favorites added!</div>
+    return <div style={nofavorites}>No favorites added!</div>
   } else {
     return (
       <div className="display">
