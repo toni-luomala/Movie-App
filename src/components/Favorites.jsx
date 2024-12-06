@@ -2,6 +2,7 @@ import Modal from './Modal'
 import Button from './Button'
 import favoritesService from '../services/favorites'
 import { useState, useEffect } from 'react'
+import '../styles/MovieCard.css'
 
 const nofavorites = {
   fontSize: '1.5rem'
@@ -39,7 +40,7 @@ const Favorites = ({ movie, getFavorites, setFavorites, favorites }) => {
               movie={movie}
             />
             <img
-              className="movie"
+              className="movie-image"
               src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
               alt={movie.original_title}
               onClick={() => {
