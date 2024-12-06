@@ -2,11 +2,11 @@
   width: 12rem;
   height: 18rem;
   border-radius: 3%;
-  border: 1rem solid transparent;
+  border: 2px solid transparent;
   transition: border-color 0.3s;
 }
 
-.movie:hover {
+.movie-image:hover {
   border-color: #646cff;
 }
 
