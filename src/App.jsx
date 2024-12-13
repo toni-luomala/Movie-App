@@ -15,27 +15,19 @@ const App = () => {
   const [showFavorites, setShowFavorites] = useState(false)
 
   const getMovieRequest = async () => {
-    const url = import.meta.env.VITE_REACT_API_URL
+    const mainUrl = import.meta.env.VITE_REACT_API_URL
 
     const searchUrl = import.meta.env.VITE_REACT_API_URL_SEARCH
 
     const apiKey = import.meta.env.VITE_REACT_API_KEY
 
-    const fullUrl = `${searchUrl}${search}${apiKey}`
+    const url =
+      search === '' ? `${mainUrl}${apiKey}` : `${searchUrl}${search}${apiKey}`
 
     const response = await fetch(url)
-
-    const searchResponse = await fetch(fullUrl)
-
     const responseJson = await response.json()
 
-    const searchResponseJson = await searchResponse.json()
-
-    console.log('response: ', responseJson.results)
-
-    search === ''
-      ? setMovies(responseJson.results)
-      : setMovies(searchResponseJson.results)
+    setMovies(responseJson.results)
   }
 
   useEffect(() => {
