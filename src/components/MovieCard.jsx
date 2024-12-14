@@ -2,9 +2,26 @@ import { useState } from 'react'
 import Modal from './Modal'
 import PropTypes from 'prop-types'
 import '../styles/MovieCard.css'
+import favoritesService from '../services/favorites'
 
-const MovieCard = ({ movie, addToFavorites }) => {
+const MovieCard = ({ movie, favorites }) => {
   const [isOpen, setIsOpen] = useState(false)
+
+  const addToFavorites = (movie) => {
+    const alreadyFavorite = favorites.some(
+      (newmovie) => newmovie.id === movie.id
+    )
+
+    if (!alreadyFavorite) {
+      console.log('favoritemovie: ', movie)
+      favoritesService.add(movie).then((returnedMovie) => {
+        setFavorites([...favorites, returnedMovie])
+      })
+      window.alert(`Added ${movie.original_title} succesfully to favorites.`)
+    } else {
+      window.alert(`${movie.original_title} is already added to favorites.`)
+    }
+  }
 
   const handleModal = () => {
     setIsOpen(true)

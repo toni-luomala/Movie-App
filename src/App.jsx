@@ -5,6 +5,7 @@ import Navbar from './components/Navbar'
 import Bottombar from './components/Bottombar'
 import Favorites from './components/Favorites'
 import favoritesService from './services/favorites'
+import Popupbox from './components/Popup'
 import './styles/App.css'
 
 const App = () => {
@@ -58,22 +59,6 @@ const App = () => {
 
   console.log('favorites: ', favorites)
 
-  const addToFavorites = (movie) => {
-    const alreadyFavorite = favorites.some(
-      (newmovie) => newmovie.id === movie.id
-    )
-
-    if (!alreadyFavorite) {
-      console.log('favoritemovie: ', movie)
-      favoritesService.add(movie).then((returnedMovie) => {
-        setFavorites([...favorites, returnedMovie])
-      })
-      window.alert(`Added ${movie.original_title} succesfully to favorites.`)
-    } else {
-      window.alert(`${movie.original_title} is already added to favorites.`)
-    }
-  }
-
   const favoriteCount = (favorites) => {
     if (favorites.length === 0) {
       return null
@@ -95,6 +80,7 @@ const App = () => {
       <button className="top-button" onClick={() => setShowFavorites(true)}>
         favorites {favoriteCount(favorites)}
       </button>
+      <Popupbox></Popupbox>
       {showFavorites && (
         <div className="display" key={favorites.id}>
           <Favorites
@@ -121,11 +107,7 @@ const App = () => {
             </div>
             <div className="title">{showTitle()}</div>
             <div className="display">
-              <Display
-                movies={movies}
-                search={search}
-                addToFavorites={addToFavorites}
-              />
+              <Display movies={movies} search={search} favorites={favorites} />
             </div>
           </div>
         </div>
