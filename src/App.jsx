@@ -59,6 +59,24 @@ const App = () => {
 
   console.log('favorites: ', favorites)
 
+  const addToFavorites = (movie) => {
+    const alreadyFavorite = favorites.some(
+      (newmovie) => newmovie.id === movie.id
+    )
+
+    if (!alreadyFavorite) {
+      console.log('favoritemovie: ', movie)
+      favoritesService.add(movie).then((returnedMovie) => {
+        getFavorites()
+        setFavorites([...favorites, returnedMovie])
+      })
+      window.alert(`Added ${movie.original_title} succesfully to favorites.`)
+    } else {
+      setFavorites(favorites)
+      window.alert(`${movie.original_title} is already added to favorites.`)
+    }
+  }
+
   const favoriteCount = (favorites) => {
     if (favorites.length === 0) {
       return null
@@ -107,7 +125,11 @@ const App = () => {
             </div>
             <div className="title">{showTitle()}</div>
             <div className="display">
-              <Display movies={movies} search={search} favorites={favorites} />
+              <Display
+                movies={movies}
+                search={search}
+                addToFavorites={addToFavorites}
+              />
             </div>
           </div>
         </div>

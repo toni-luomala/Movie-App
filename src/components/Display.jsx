@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Modal from './Modal'
 import '../styles/Display.css'
 
-const Display = ({ movies, favorites, isOpen, setIsOpen }) => {
+const Display = ({ movies, addToFavorites, isOpen, setIsOpen }) => {
   return (
     <div className="display">
       {movies.map((movie) => (
@@ -11,7 +11,7 @@ const Display = ({ movies, favorites, isOpen, setIsOpen }) => {
           <Modal open={isOpen} onClose={() => setIsOpen(false)} movie={movie} />
           <MovieCard
             movie={movie}
-            favorites={favorites}
+            addToFavorites={addToFavorites}
             onClick={() => setIsOpen(true)}
           />
         </div>
