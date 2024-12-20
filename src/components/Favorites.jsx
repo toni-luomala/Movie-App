@@ -4,10 +4,6 @@ import favoritesService from '../services/favorites'
 import { useState, useEffect } from 'react'
 import '../styles/MovieCard.css'
 
-const nofavorites = {
-  fontSize: '1.5rem'
-}
-
 const Favorites = ({ movie, getFavorites, setFavorites, favorites }) => {
   console.log('Fav: ', favorites)
   const [isOpen, setIsOpen] = useState(false)
@@ -28,7 +24,11 @@ const Favorites = ({ movie, getFavorites, setFavorites, favorites }) => {
   }
 
   if (favorites.length === 0) {
-    return <div style={nofavorites}>No favorites added!</div>
+    return (
+      <div>
+        <p>No favorites added!</p>
+      </div>
+    )
   } else {
     return (
       <div className="display">
