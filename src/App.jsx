@@ -5,15 +5,17 @@ import Navbar from './components/Navbar'
 import Bottombar from './components/Bottombar'
 import Favorites from './components/Favorites'
 import favoritesService from './services/favorites'
-import Popupbox from './components/Popup'
 import './styles/App.css'
+import Popupbox from './components/Popup'
 
 const App = () => {
   const [movies, setMovies] = useState([])
+  const [newMovie, setNewMovie] = useState(null)
   const [search, setSearch] = useState('')
   const [filteredMovies] = useState([])
   const [favorites, setFavorites] = useState([])
   const [showFavorites, setShowFavorites] = useState(false)
+  const [popup, setPopup] = useState(false)
 
   const getMovieRequest = async () => {
     const mainUrl = import.meta.env.VITE_REACT_API_URL
@@ -55,6 +57,16 @@ const App = () => {
     setMovies(searchedMovie)
   }
 
+  const handlePopup = () => {
+    console.log('open popup')
+    setPopup(true)
+    setTimeout(() => {
+      setPopup(false)
+    }, 3000)
+  }
+
+  //console.log('popup state: ', popup)
+
   console.log('movies: ', movies)
 
   console.log('favorites: ', favorites)
@@ -65,16 +77,22 @@ const App = () => {
     )
 
     if (!alreadyFavorite) {
-      console.log('favoritemovie: ', movie)
+      console.log(typeof movie)
       favoritesService.add(movie).then((returnedMovie) => {
         getFavorites()
         setFavorites([...favorites, returnedMovie])
+        setNewMovie(movie)
+        console.log('jotain', newMovie)
+        handlePopup()
       })
-      window.alert(`Added ${movie.original_title} succesfully to favorites.`)
+
+      //window.alert(`Added ${movie.original_title} succesfully to favorites.`)
     } else {
+      handlePopup()
       setFavorites(favorites)
-      window.alert(`${movie.original_title} is already added to favorites.`)
+      //window.alert(`${movie.original_title} is already added to favorites.`)
     }
+    return newMovie
   }
 
   const favoriteCount = (favorites) => {
@@ -98,7 +116,7 @@ const App = () => {
       <button className="top-button" onClick={() => setShowFavorites(true)}>
         favorites {favoriteCount(favorites)}
       </button>
-      <Popupbox></Popupbox>
+      <Popupbox popup={popup} newMovie={newMovie}></Popupbox>
       {showFavorites && (
         <div className="display" key={favorites.id}>
           <Favorites
