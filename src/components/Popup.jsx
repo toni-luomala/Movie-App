@@ -6,7 +6,9 @@ const Popupbox = ({ popup, newMovie }) => {
   if (!popup) return null
   return (
     <div className="popupstyles">
-      <p>Added {newMovie.original_title} to favorites!</p>
+      <p>
+        Added <b>{newMovie.original_title}</b> to favorites!
+      </p>
     </div>
   )
 }

@@ -57,25 +57,21 @@ const App = () => {
     setMovies(searchedMovie)
   }
 
+  let alreadyFavorite = false
+
   const handlePopup = () => {
-    console.log('open popup')
     setPopup(true)
     setTimeout(() => {
       setPopup(false)
     }, 3000)
   }
 
-  //console.log('popup state: ', popup)
-
   console.log('movies: ', movies)
 
   console.log('favorites: ', favorites)
 
   const addToFavorites = (movie) => {
-    const alreadyFavorite = favorites.some(
-      (newmovie) => newmovie.id === movie.id
-    )
-
+    alreadyFavorite = favorites.some((newmovie) => newmovie.id === movie.id)
     if (!alreadyFavorite) {
       console.log(typeof movie)
       favoritesService.add(movie).then((returnedMovie) => {
@@ -85,14 +81,9 @@ const App = () => {
         console.log('jotain', newMovie)
         handlePopup()
       })
-
-      //window.alert(`Added ${movie.original_title} succesfully to favorites.`)
     } else {
-      handlePopup()
       setFavorites(favorites)
-      //window.alert(`${movie.original_title} is already added to favorites.`)
     }
-    return newMovie
   }
 
   const favoriteCount = (favorites) => {
@@ -116,7 +107,11 @@ const App = () => {
       <button className="top-button" onClick={() => setShowFavorites(true)}>
         favorites {favoriteCount(favorites)}
       </button>
-      <Popupbox popup={popup} newMovie={newMovie}></Popupbox>
+      <Popupbox
+        popup={popup}
+        newMovie={newMovie}
+        alreadyFavorite={alreadyFavorite}
+      ></Popupbox>
       {showFavorites && (
         <div className="display" key={favorites.id}>
           <Favorites
