@@ -83,6 +83,7 @@ const App = () => {
       })
     } else {
       setFavorites(favorites)
+      handlePopup()
     }
   }
 
