@@ -16,6 +16,7 @@ const App = () => {
   const [favorites, setFavorites] = useState([])
   const [showFavorites, setShowFavorites] = useState(false)
   const [popup, setPopup] = useState(false)
+  const [alreadyFavorite, setAlreadyFavorite] = useState(false)
 
   const getMovieRequest = async () => {
     const mainUrl = import.meta.env.VITE_REACT_API_URL
@@ -57,8 +58,6 @@ const App = () => {
     setMovies(searchedMovie)
   }
 
-  let alreadyFavorite = false
-
   const handlePopup = () => {
     setPopup(true)
     setTimeout(() => {
@@ -71,19 +70,17 @@ const App = () => {
   console.log('favorites: ', favorites)
 
   const addToFavorites = (movie) => {
-    alreadyFavorite = favorites.some((newmovie) => newmovie.id === movie.id)
-    if (!alreadyFavorite) {
-      console.log(typeof movie)
+    const isFavorite = favorites.some((newmovie) => newmovie.id === movie.id)
+
+    setAlreadyFavorite(isFavorite)
+    setNewMovie(movie)
+    handlePopup()
+
+    if (!isFavorite) {
       favoritesService.add(movie).then((returnedMovie) => {
         getFavorites()
         setFavorites([...favorites, returnedMovie])
-        setNewMovie(movie)
-        console.log('jotain', newMovie)
-        handlePopup()
       })
-    } else {
-      setFavorites(favorites)
-      handlePopup()
     }
   }
 

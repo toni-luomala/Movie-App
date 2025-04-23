@@ -5,7 +5,9 @@ const Popupbox = ({ popup, newMovie, alreadyFavorite }) => {
   console.log('alreadyFAvorite:', alreadyFavorite)
   const showMessage = () =>
     alreadyFavorite ? (
-      <p>{newMovie.original_title} is already in favorites!</p>
+      <p>
+        <b>{newMovie.original_title}</b> is already in favorites!
+      </p>
     ) : (
       <p>
         Added <b>{newMovie.original_title}</b> to favorites!
